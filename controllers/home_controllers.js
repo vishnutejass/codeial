@@ -1,6 +1,17 @@
+const Post = require('../models/post');
+
 module.exports.home = function(req,res){
-    return res.end(' document.body.style.backgroundImage="url('d1vzdswwroofzl.cloudfront.net/wp-content/uploads/2023/01/Oscars-2023-Naatu-Naatu-Nominated-For-Best-Original-Song-1.jpg')')
-   
-    return res.end('<h1>Express is up for codeial')
+  // console.log(req.cookie);
+  // res.cookie('user_id',25);
+   // return res.end('<h1>Express is up for codeial')
+    
+   Post.find({}, function(err , posts){
+    return res.render('home',{
+      title:"Codeial | Home",
+      posts: posts
+   });
+ });
+
+
 }
 
