@@ -60,6 +60,13 @@ module.exports.createSession = function(req,res){
 //whenever the request comes, the controller with fetch the views then this views will send to browser
 
 module.exports.destroySession = function(req,res){
-    req.logout();
-    return res.redirect('/');
+    req.logout(function (err) {
+        if (err) {
+          return next(err);
+        }
+      //  req.flash("success", "You have Logged out");
+    
+        res.redirect("/student/vishnu");
+      });
+    
 }
